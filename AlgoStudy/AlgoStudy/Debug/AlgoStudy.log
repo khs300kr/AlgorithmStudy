@@ -1,3 +1,0 @@
-﻿  Lesson2.cpp
-C:\Users\khs300kr\source\repos\AlgoStudy\AlgoStudy\Lesson2.cpp(117,1): warning C4326: return type of 'main' should be 'int' instead of 'void'
-  AlgoStudy.vcxproj -> C:\Users\khs300kr\source\repos\AlgoStudy\Debug\AlgoStudy.exe
