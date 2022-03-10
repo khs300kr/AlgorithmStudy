@@ -1,5 +1,4 @@
-﻿  Lesson2-2.cpp
-D:\AlgoStudy\AlgoStudy\AlgoStudy\Lesson2-2.cpp(22,15): warning C4244: 'initializing': conversion from '__int64' to 'int', possible loss of data
-D:\AlgoStudy\AlgoStudy\AlgoStudy\Lesson2-2.cpp(32,1): warning C4326: return type of 'main' should be 'int' instead of 'void'
-D:\AlgoStudy\AlgoStudy\AlgoStudy\Lesson2-2.cpp(28): warning C4715: 'solution': not all control paths return a value
-  AlgoStudy.vcxproj -> D:\AlgoStudy\AlgoStudy\x64\Debug\AlgoStudy.exe
+﻿  Lesson3-3(Training task).cpp
+D:\AlgoStudy\Codility\AlgoStudy\AlgoStudy\Lesson3-3(Training task).cpp(121,1): warning C4326: return type of 'main' should be 'int' instead of 'void'
+D:\AlgoStudy\Codility\AlgoStudy\AlgoStudy\Lesson3-3(Training task).cpp(117): warning C4715: 'solution': not all control paths return a value
+  AlgoStudy.vcxproj -> D:\AlgoStudy\Codility\AlgoStudy\x64\Debug\AlgoStudy.exe

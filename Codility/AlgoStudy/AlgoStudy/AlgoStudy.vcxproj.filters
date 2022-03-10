@@ -30,5 +30,8 @@
     <ClCompile Include="Lesson3-2%28PermMissingElem%29.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Lesson3-3(Training task).cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>
