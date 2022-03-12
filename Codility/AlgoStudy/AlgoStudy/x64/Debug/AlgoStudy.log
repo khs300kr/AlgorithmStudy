@@ -1,4 +1,0 @@
-﻿  Lesson3-3(Training task).cpp
-D:\AlgoStudy\Codility\AlgoStudy\AlgoStudy\Lesson3-3(Training task).cpp(121,1): warning C4326: return type of 'main' should be 'int' instead of 'void'
-D:\AlgoStudy\Codility\AlgoStudy\AlgoStudy\Lesson3-3(Training task).cpp(117): warning C4715: 'solution': not all control paths return a value
-  AlgoStudy.vcxproj -> D:\AlgoStudy\Codility\AlgoStudy\x64\Debug\AlgoStudy.exe
