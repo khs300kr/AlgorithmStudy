@@ -80,6 +80,138 @@ private:
 	int		_capacity = 0;
 };
 
+template<typename T>
+class Node
+{
+public:
+	Node()
+		: _prev(nullptr), _next(nullptr), _data(T())
+	{
+
+	}
+	Node(const T& value)
+		: _prev(nullptr), _next(nullptr), _data(value)
+	{
+
+	}
+	
+public:
+	Node* _prev;
+	Node* _next;
+	T	  _data;
+};
+
+template<typename T>
+class Iterator
+{
+public:
+	Iterator()
+		: _node(nullptr)
+	{
+
+	}
+
+	Iterator(Node<T>* node)
+		: _node(node)
+	{
+
+	}
+
+	// ++it
+	Iterator& operator++()
+	{
+		_node = _node->_next;
+		return *this;
+	}
+	// it++
+	Iterator& operator(int)
+	{
+		Iterator<T> temp = *this;
+		_node = node->_next;
+		return temp;
+	}
+
+public:
+	Node<T>* _node;
+};
+
+template<typename T>
+class List
+{
+public:
+	List()
+		: _size(0)
+	{
+		_head = new Node<T>();
+		_tail = new Node<T>();
+		_head->next = _tail;
+		_tail->_prev = _head;
+	}
+
+	~List()
+	{
+		while (_size > 0)
+		{
+
+		}
+		delete _head;
+		delete _tail;
+	}
+
+	void push_back(const T& value)
+	{
+		AddNode(_tail, value);
+	}
+	void pop_back()
+	{
+		RemoveNode(_tail->prev);
+	}
+private:
+	Node<T>* AddNode(Node<T>* before, const T& value)
+	{
+		Node<T>* newNode = new Node<T>(value);
+		Node<T>* prevNode = before->_prev;
+
+		prevNode->_next = newNode;
+		newNode->_prev = prevNode;
+
+		newNode->_next = before;
+		before->_prev = newNode;
+
+		_size++;
+
+		return newNode;
+	}
+	
+	Node<T>* RemoveNode(Node<T>* node)
+	{
+		Node<T>* prevNode = node->_prev;
+		Node<T>* nextNode = node->_next;
+
+		prevNode->_next = nextNode;
+		nextNode->_prev = prevNode;
+
+		delete node;
+
+		_size--;
+
+		return nextNode;
+	}
+
+public:
+	using iterator = Iterator<T>;
+
+	iterator begin(){ return iterator(_head->_next); }
+	iterator end() { return iterator(_tail); }
+
+
+private:
+	Node<T>* _head;
+	Node<T>* _tail;
+	int		 _size;
+};
+
+
 void main()
 {
 	//Vector<int> v;
