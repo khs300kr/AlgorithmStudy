@@ -1,3 +1,4 @@
+#include <iostream>
 #include <algorithm>
 #include <stack>
 #include <string>
@@ -9,22 +10,57 @@ using namespace std;
 
 int solution(string& S)
 {
-	stack<char> BracketStack;
+	if (S.size() % 2 == 1)
+	{
+		return 0;
+	}
 
-	for (auto d : S)
+	if (S.empty())
+	{
+		return 1;
+	}
+
+	stack<char> s;
+
+	for (auto& d : S)
 	{
 		if (d == '{' || d == '[' || d == '(')
 		{
-			BracketStack.push(d);
+			s.push(d);			
 		}
-		else if (d == '}' || d == ']' || d == ')')
+		else
 		{
-			auto c = BracketStack.top();
+			if (s.empty()) return 0;
 
+			char c = s.top();
+			if (d == ')')
+			{
+				if (c != '(')
+				{
+					return 0;
+				}
+			}
+			else if (d == ']')
+			{
+				if (c != '[')
+				{
+					return 0;
+				}
+
+			}
+			else if (d == '}')
+			{
+				if (c != '{')
+				{
+					return 0;
+				}
+			}
+			s.pop();
 		}
 	}
-	return 0;
 
+	if (s.empty()) return 1;
+	else return 0;
 }
 
 void main()

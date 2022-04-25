@@ -1,6 +1,7 @@
 #include <iostream>
 #include <vector>
 #include <list>
+#include <stack>
 
 using namespace std;
 
@@ -79,7 +80,6 @@ private:
 	int		_size = 0;
 	int		_capacity = 0;
 };
-
 template<typename T>
 class Node
 {
@@ -100,7 +100,6 @@ public:
 	Node* _next;
 	T	  _data;
 };
-
 template<typename T>
 class Iterator
 {
@@ -124,17 +123,44 @@ public:
 		return *this;
 	}
 	// it++
-	Iterator& operator(int)
+	Iterator& operator++(int)
 	{
 		Iterator<T> temp = *this;
-		_node = node->_next;
+		_node = _node->_next;
 		return temp;
+	}
+	// --it
+	Iterator& operator--()
+	{
+		_node = _node->_prev;
+		return *this;
+	}
+	// it--
+	Iterator operator--(int)
+	{
+		Iterator<T> temp = *this;
+		_node = _node->_prev;
+		return temp;
+	}
+	// *it
+	T& operator*()
+	{
+		return _node->data;
+	}
+
+	bool operator==(const Iterator& other)
+	{
+		return _node == other._node;
+	}
+
+	bool operator!=(const Iterator& other)
+	{
+		return _node != other._node;
 	}
 
 public:
 	Node<T>* _node;
 };
-
 template<typename T>
 class List
 {
@@ -152,7 +178,7 @@ public:
 	{
 		while (_size > 0)
 		{
-
+			pop_back();
 		}
 		delete _head;
 		delete _tail;
@@ -204,6 +230,18 @@ public:
 	iterator begin(){ return iterator(_head->_next); }
 	iterator end() { return iterator(_tail); }
 
+	iterator insert(iterator it, const T& value)
+	{
+		Node<T>* node = AddNode(it._node, value);
+		return iterator(node);
+	}
+
+	iterator erase(iterator it)
+	{
+		Node<T>* node = RemoveNode(it._node);
+		return iterator(node);
+	}
+
 
 private:
 	Node<T>* _head;
@@ -211,28 +249,47 @@ private:
 	int		 _size;
 };
 
+template<typename T>
+class Stack
+{
+public:
+	void push(const T& value)
+	{
+		_container.push_back(value);
+	}
+
+	void pop()
+	{
+		_container.pop_back();
+	}
+
+	T& top()
+	{
+		return _container.back();
+	}
+
+	bool empty() { return _container.empty(); }
+
+	int size() { return _container.size(); }
+
+private:
+	vector<T> _container;
+};
+
+
 
 void main()
 {
-	//Vector<int> v;
-	//for (int i = 0; i < 100; ++i)
-	//{
-	//	v.push_back(i);
-	//	cout << v[i] << " " <<  v.size() << " " << v.capacity() << endl;
-	//}
-	//v.clear();
-	//cout << v.size() << " " << v.capacity() << endl;
+	stack<int> s;
+	
+	// 삽입
+	s.push(1);
+	s.push(2);
+	s.push(3);
 
+	// 최상위 원소
+	int data = s.top();
 
-	list<int> li;
-
-	for (int i = 0; i < 10; ++i)
-	{
-		li.push_back(i);
-
-		// li.push_front(i);
-		
-	}
-
-	return;
-}
+	// 최상위 원소 삭제
+	s.pop();
+}	
